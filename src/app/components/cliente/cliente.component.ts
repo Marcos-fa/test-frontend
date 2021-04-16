@@ -11,7 +11,7 @@ import { Cliente } from "../../models/cliente";
   providers: [ClienteService],
 })
 export class ClienteComponent implements OnInit {
-  constructor(public clienteService: ClienteService) {}
+  constructor(public clienteService: ClienteService ) { }
   searchValue: string;
   nombre: string;
 
@@ -19,7 +19,10 @@ export class ClienteComponent implements OnInit {
     this.getClientes();
   }
 
+
   addCliente(form?: NgForm) {
+    console.log('Entra aqui')
+    console.log(form.value)
     if (form.value._id) {
       console.log(form.value)
       this.clienteService.putCliente(form.value).subscribe((res) => {
@@ -56,15 +59,15 @@ export class ClienteComponent implements OnInit {
   searchNombre() {
     if (this.nombre) {
       this.clienteService.findByNombre(this.nombre).subscribe((res) => {
-          this.clienteService.clientes = res;
-        },
+        this.clienteService.clientes = res;
+      },
         error => {
           console.log(error);
         });
-    }else{
+    } else {
       this.getClientes();
     }
-    
+
   }
 
   resetForm(form?: NgForm) {

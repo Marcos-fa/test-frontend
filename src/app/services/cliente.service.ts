@@ -7,7 +7,14 @@ import { Cliente } from "../models/cliente";
   providedIn: "root",
 })
 export class ClienteService {
-  selectedCliente: Cliente;
+  selectedCliente: Cliente = {
+    nombre: '',
+    rfc: '',
+    telefono: '',
+    email: '',
+    cp: '',
+    direccion: '',
+  };
   clientes: Cliente[];
   readonly URL_API = "http://localhost:3000/api/clientes";
 
@@ -38,5 +45,5 @@ export class ClienteService {
   // findByTitle(title: string) {
   //   return this.http.get<Cliente[]>(this.URL_API + `?${title}`)
   // }
-  
+
 }
